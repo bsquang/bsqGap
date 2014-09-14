@@ -17,6 +17,9 @@
         bsq
     </author>
 	
+	<preference name="stay-in-webview" value="true" />
+	<preference name="fullscreen" value="true" />  
+	
 	<gap:platform name="ios" />
 	<gap:platform name="android" />
 
