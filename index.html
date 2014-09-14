@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 	<head>
-        <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+        <script src="phonegap.js"></script>
         <script type="text/javascript" charset="utf-8" src="jquery.js"></script>
 	</head>
 
 	<body>
 		<h1>BSQ!PhoneGap</h1>
         <p id='Status'></p>
-		<button value='Prompt' onclick="testPrompt()"></button>
+		
         
         <script type="text/javascript">
             
@@ -18,23 +18,12 @@
             
             function onDeviceReady() {
 
+				navigator.notification.vibrate();
 				
+				$("#Status").html("Device ready!");
 				
             }
-			
-			function testPrompt(){
-				navigator.notification.prompt(
-					'Please enter your name',  // message
-					onPrompt,                  // callback to invoke
-					'Registration',            // title
-					['Ok','Exit'],             // buttonLabels
-					'Jane Doe'                 // defaultText
-				);
-			}
-			
-			function onPrompt(results) {
-				alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
-			}
+		
             
         </script>
         
