@@ -17,13 +17,16 @@
         bsq
     </author>
 	
+	<preference name="orientation" value="portrait" />
 	<preference name="stay-in-webview" value="true" />
 	<preference name="fullscreen" value="true" />  
 	
 	<gap:platform name="ios" />
 	<gap:platform name="android" />
 	
-	<gap:config-file platform="ios" parent="UIViewControllerBasedStatusBarAppearance" overwrite="false"></gap:config-file>
-	<gap:config-file platform="ios" parent="UIStatusBarHidden" overwrite="true"></gap:config-file>
+	<preference name="target-device" value="universal" />
+	<preference name="deployment-target" value="7.0" />
+	
+	<access origin="*"/>
 	
 </widget>
