@@ -18,7 +18,9 @@
             
             function onDeviceReady() {
 
-				navigator.notification.vibrate();
+				setTimeout(function(){
+					 navigator.notification.vibrate();
+				},1000);
 				
 				$("#Status").html("Device ready!");
 				
