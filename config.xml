@@ -7,7 +7,7 @@
 
     <!-- versionCode is optional and Android only -->
 
-    <name>bsqAppGitHub</name>
+    <name>bsqApp</name>
 
     <description>
         An example for bsq phonegap. 
@@ -17,12 +17,12 @@
         bsq
     </author>
 	
-	<preference name="phonegap-version" value="3.5.0" />
+	<!--<preference name="phonegap-version" value="3.5.0" />
 	<preference name="orientation" value="portrait" />
 	<preference name="fullscreen" value="true" />  
 	<preference name="stay-in-webview" value="true" />
 	<preference name="target-device" value="universal" />
-	<preference name="deployment-target" value="7.0" />
+	<preference name="deployment-target" value="7.0" />-->
 	
 	<gap:platform name="ios" />
 	<gap:platform name="android" />
