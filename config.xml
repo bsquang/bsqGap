@@ -17,6 +17,8 @@
         bsq
     </author>
 	
+	<preference name="target-device" value="universal" />
+	<preference name="deployment-target" value="7.0" />
 	<preference name="orientation" value="portrait" />
 	<preference name="stay-in-webview" value="true" />
 	<preference name="fullscreen" value="true" />  
@@ -24,8 +26,7 @@
 	<gap:platform name="ios" />
 	<gap:platform name="android" />
 	
-	<preference name="target-device" value="universal" />
-	<preference name="deployment-target" value="7.0" />
+	
 	
 	<access origin="*"/>
 	
