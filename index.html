@@ -16,16 +16,16 @@
             // device APIs are available
             //
             function onDeviceReady() {
-                alert("Ready device");
-                
-                window.addEventListener("batterystatus", onBatteryStatus, false);
+                //alert("Ready device");
+                $("#battery").html("Device ready!");
+                //window.addEventListener("batterystatus", onBatteryStatus, false);
             }
             
             
 
             function onBatteryStatus(info) {
                 // Handle the online event
-                $("#battery").html("Level: " + info.level + " isPlugged: " + info.isPlugged);
+                //$("#battery").html("Level: " + info.level + " isPlugged: " + info.isPlugged);
             }
 
         </script>
