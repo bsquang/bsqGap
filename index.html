@@ -8,7 +8,7 @@
 	<body>
 		<h1>BSQ!PhoneGap</h1>
         <p id='Status'></p>
-		
+		<img id='testImage' style='width:100%' />
         
         <script type="text/javascript">
             
@@ -39,8 +39,24 @@
 				navigator.notification.vibrate();
 				alert('You selected button ' + buttonIndex);
 				
+				navigator.camera.getPicture(onSuccess, onFail, { quality: 50, destinationType: navigator.camera.DestinationType.DATA_URL });
 			}
 			
+			
+			
+			
+			function onSuccess(imageData) {
+				
+				setTimeout(function(){
+					var image = document.getElementById('testImage');
+					image.src = "data:image/jpeg;base64," + imageData;
+				
+				},10);
+			}
+			
+			function onFail(message) {
+				alert('Failed because: ' + message);
+			}
 			
 		
             
