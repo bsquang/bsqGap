@@ -19,12 +19,29 @@
             function onDeviceReady() {
 
 				setTimeout(function(){
-					 navigator.notification.vibrate();
+					
+					navigator.notification.confirm(
+						'You are the winner!', // message
+						 onConfirm,            // callback to invoke with index of button pressed
+						'Game Over',           // title
+						['Restart','Exit']     // buttonLabels
+					);
+					
+					 
 				},1000);
 				
 				$("#Status").html("Device ready!");
 				
             }
+			
+			function onConfirm(buttonIndex) {
+				
+				navigator.notification.vibrate();
+				alert('You selected button ' + buttonIndex);
+				
+			}
+			
+			
 		
             
         </script>
