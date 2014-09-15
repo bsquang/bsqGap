@@ -9,6 +9,11 @@
 		<h1>BSQ!PhoneGap</h1>
 		<p id='Status'></p>
 		<img id='testImage' style='width:100%' />
+		
+		<audio controls>			
+			<source src="res/horse.mp3" type="audio/mpeg">
+			Your browser does not support the audio tag.
+		</audio>
         
 		<script type="text/javascript">
 
@@ -37,7 +42,7 @@
 				navigator.notification.vibrate();
 				alert('You selected button ' + buttonIndex);
 				
-				navigator.camera.getPicture(onSuccess, onFail, { quality: 50, destinationType: navigator.camera.DestinationType.DATA_URL });
+				//navigator.camera.getPicture(onSuccess, onFail, { quality: 50, destinationType: navigator.camera.DestinationType.DATA_URL });
 			}
 			
 			function onSuccess(imageData) {
