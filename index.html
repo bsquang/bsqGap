@@ -8,10 +8,12 @@
 	<body>
 		<h1>BSQ!PhoneGap</h1>
 		<p id='Status'></p>
-		<img id='testImage' style='width:100%' />
+		<img id='testImage' style='width:100%' ontouchstart="playSound()" />
+		
+		
 		
 		<audio controls>			
-			<source src="res/horse.mp3" type="audio/mpeg">
+			<source src="res/sound.mp3" type="audio/mpeg">
 			Your browser does not support the audio tag.
 		</audio>
         
@@ -19,28 +21,49 @@
 
 			document.addEventListener("deviceready", onDeviceReady, false);
 			
+			var tempAudio = new Audio("res/pang.mp3");
+			function playSound(){
+								
+				if (tempAudio.currentTime > 0 ) {
+					tempAudio.pause();
+					tempAudio.currentTime = 0;
+					tempAudio.play();
+				}
+				else{
+					tempAudio.play();
+				}
+				
+				//navigator.notification.vibrate();
+			}
+			
 			function onDeviceReady() {
 		
-				setTimeout(function(){
-					
-					navigator.notification.confirm(
-						'You are the winner!', // message
-						 onConfirm,            // callback to invoke with index of button pressed
-						'Game Over',           // title
-						['Restart','Exit']     // buttonLabels
-					);
-					
-					 
-				},1000);
+				//setTimeout(function(){
+				//	
+				//	navigator.notification.confirm(
+				//		'You are the winner!', // message
+				//		 onConfirm,            // callback to invoke with index of button pressed
+				//		'Game Over',           // title
+				//		['Restart','Exit']     // buttonLabels
+				//	);
+				//	
+				//	 
+				//},1000);
+				
+				
 				
 				$("#Status").html("Device ready!");
-						
+				
+				$("#testImage")[0].src = "res/image.jpg";
+				
+				
 			}
+					
 					
 			function onConfirm(buttonIndex) {
 				
-				navigator.notification.vibrate();
-				alert('You selected button ' + buttonIndex);
+				
+				//alert('You selected button ' + buttonIndex);
 				
 				//navigator.camera.getPicture(onSuccess, onFail, { quality: 50, destinationType: navigator.camera.DestinationType.DATA_URL });
 			}
