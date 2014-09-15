@@ -7,17 +7,15 @@
 
 	<body>
 		<h1>BSQ!PhoneGap</h1>
-        <p id='Status'></p>
+		<p id='Status'></p>
 		<img id='testImage' style='width:100%' />
         
-        <script type="text/javascript">
-            
-            
-            
-            document.addEventListener("deviceready", onDeviceReady, false);
-            
-            function onDeviceReady() {
+		<script type="text/javascript">
 
+			document.addEventListener("deviceready", onDeviceReady, false);
+			
+			function onDeviceReady() {
+		
 				setTimeout(function(){
 					
 					navigator.notification.confirm(
@@ -31,9 +29,9 @@
 				},1000);
 				
 				$("#Status").html("Device ready!");
-				
-            }
-			
+						
+			}
+					
 			function onConfirm(buttonIndex) {
 				
 				navigator.notification.vibrate();
@@ -41,9 +39,6 @@
 				
 				navigator.camera.getPicture(onSuccess, onFail, { quality: 50, destinationType: navigator.camera.DestinationType.DATA_URL });
 			}
-			
-			
-			
 			
 			function onSuccess(imageData) {
 				
@@ -58,9 +53,7 @@
 				alert('Failed because: ' + message);
 			}
 			
-		
-            
-        </script>
+		</script>
         
 	</body>
 
