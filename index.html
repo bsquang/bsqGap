@@ -4,205 +4,129 @@
         <script src="phonegap.js"></script>
 	<link rel="stylesheet" type="text/css" href="css.css">
         <script type="text/javascript" charset="utf-8" src="jquery.js"></script>
+	<script>
+		var bPHONEGAP = true;
+	</script>
 	</head>
 
-	<body>
-		
-		<div class='panel1'>
-		    
-		    <div class='buttonMusic' bsq-id='0'>
-			<!--<p>1</p>-->
-		    </div>
-		    <div class='buttonMusic' bsq-id='1'>
-		       <!-- <p>2</p>-->
-		    </div>
-		    <div class='buttonMusic' bsq-id='2'>
-		       <!-- <p>3</p>-->
-		    </div>
-		    
-		    <div class='buttonMusic' bsq-id='3'>
-			<!--<p>4</p>-->
-		    </div>
-		    <div class='buttonMusic' bsq-id='4'>
-		       <!-- <p>5</p>-->
-		    </div>
-		    <div class='buttonMusic' bsq-id='5'>
-		       <!-- <p>6</p>-->
-		    </div>
-		    
-		    <p id='timeMusic'>Time</p>
-		    
-		</div>
-		
+	 <body>
+	
+            <div>                
+                <div class='panel1'>
+                    
+                    <div class='buttonMusic' bsq-id='0'>
+                        <!--<p>1</p>-->
+                    </div>
+                    <div class='buttonMusic' bsq-id='1'>
+                       <!-- <p>2</p>-->
+                    </div>
+                    <div class='buttonMusic' bsq-id='2'>
+                       <!-- <p>3</p>-->
+                    </div>
+                    
+                    <div class='buttonMusic' bsq-id='3'>
+                        <!--<p>4</p>-->
+                    </div>
+                    <div class='buttonMusic' bsq-id='4'>
+                       <!-- <p>5</p>-->
+                    </div>
+                    <div class='buttonMusic' bsq-id='5'>
+                       <!-- <p>6</p>-->
+                    </div>
+                    
+                    <p id='timeMusic'>Time</p>
+                    
+                </div>                
                 
+                
+                
+                
+            </div>
             
-	<script>
-	    var listAudio = [];
-	    //
-	    listAudio[0] = new Audio("res/pang.mp3");
-	    listAudio[1] = new Audio("res/pang.mp3");
-	    listAudio[2] = new Audio("res/pang.mp3");
-	    //
-	    listAudio[3] = new Audio("res/combi.mp3");
-	    listAudio[4] = new Audio("res/combi.mp3");
-	    listAudio[5] = new Audio("res/combi.mp3");
-	    
-	//    $(listAudio[0]).bind('timeupdate',function(){
-	//	
-	//	//
-	//	//if (listAudio[0].currentTime > 0.007 ) {
-	//	//    listAudio[0].pause();
-	//	//    listAudio[0].currentTime = 0;                            
-	//	//}
-	//    })
-	    
-	    var counter = 0;
-	    //var tempAudio = new Audio("res/pang.mp3");
-	    function playSound(id){
-			
-		playAudio("res/pang.mp3");
-						    
-		//if (listAudio[id].currentTime > 0.007 ) {
-		//	listAudio[id].pause();
-		//	listAudio[id].currentTime = 0;
-		//	listAudio[id].play();
-		//}
-		//else{
-		//	listAudio[id].play();
-		//}
-		
-		//$("#timeMusic").html(counter++);
-	    }
-	    //100,100000;
-	    
-	    
-	    document.addEventListener("deviceready", onDeviceReady, false);
-	//    $(document).ready(function(){
-	//	
-	//	//alert($(window).height())
-	//	
-	//    })
-	    function playAudio(url) {
-		// Play the audio file at url
-		var my_media = new Media(url,
-		    // success callback
-		    function () {
-			//console.log("playAudio():Audio Success");
-		    },
-		    // error callback
-		    function (err) {
-			//console.log("playAudio():Audio Error: " + err);
-		    }
-		);
-		// Play audio
-		my_media.play();
-	    }
-
-	    function onDeviceReady() {
-		
-		window.addEventListener("touchmove",function(e){
-			e.preventDefault();
-		    })
-		
-		$(".buttonMusic").bind("touchstart",function(){
-		
-			var tempid = $(this).attr("bsq-id");
-			playSound(tempid);
-			
-			$(this).css({
-			    'background' : 'red'
-			})
-		})
-		
-		$(".buttonMusic").bind("touchend",function(){
-		    
-		    //var tempid = $(this).attr("bsq-id");
-		    //playSound(tempid);
-		    
-		    $(this).css({
-			'background' : 'white'
-		    })
-		    
-		})
-	    }
-	    
-	    
-	    
-	    
-	    //$(".buttonMusic").click(function(){
-	    //    
-	    //    playSound();
-	    //    
-	    //})
-	    
-	</script>
-        
-		<!--<script type="text/javascript">
-
-			
-			
-			//var tempAudio = new Audio("res/pang.mp3");
-			//function playSound(){
-			//					
-			//	if (tempAudio.currentTime > 0 ) {
-			//		tempAudio.pause();
-			//		tempAudio.currentTime = 0;
-			//		tempAudio.play();
-			//	}
-			//	else{
-			//		tempAudio.play();
-			//	}
-			//	
-			//	//navigator.notification.vibrate();
-			//}
-			
-			//function onDeviceReady() {
-			//
-			//	//setTimeout(function(){
-			//	//	
-			//	//	navigator.notification.confirm(
-			//	//		'You are the winner!', // message
-			//	//		 onConfirm,            // callback to invoke with index of button pressed
-			//	//		'Game Over',           // title
-			//	//		['Restart','Exit']     // buttonLabels
-			//	//	);
-			//	//	
-			//	//	 
-			//	//},1000);
-			//	
-			//	
-			//	
-			//	$("#Status").html("Device ready!");
-			//	
-			//	$("#testImage")[0].src = "res/image.jpg";
-			//	
-			//	
-			//}
-					
-					
-			//function onConfirm(buttonIndex) {
-			//	
-			//	
-			//	//alert('You selected button ' + buttonIndex);
-			//	
-			//	//navigator.camera.getPicture(onSuccess, onFail, { quality: 50, destinationType: navigator.camera.DestinationType.DATA_URL });
-			//}
-			//
-			//function onSuccess(imageData) {
-			//	
-			//	setTimeout(function(){
-			//		var image = document.getElementById('testImage');
-			//		image.src = "data:image/jpeg;base64," + imageData;
-			//	
-			//	},10);
-			//}
-			//
-			//function onFail(message) {
-			//	alert('Failed because: ' + message);
-			//}
-			
-		</script>-->
-        
-	</body>
-
+            <script>
+                var listAudio = [];
+                
+                listAudio[0] = new Audio("res/EF_UBEAT_01.mp3");
+                listAudio[1] = new Audio("res/EF_UBEAT_02.mp3");
+                listAudio[2] = new Audio("res/EF_UBEAT_03.mp3");
+            
+                listAudio[3] = new Audio("res/EF_UBEAT_04.mp3");
+                listAudio[4] = new Audio("res/EF_UBEAT_05.mp3");
+                listAudio[5] = new Audio("res/EF_UBEAT_06.mp3");
+                
+                var counter = 0;                
+                function playSound(id){
+                    if(bPHONEGAP){
+                        
+                        var url = "res/EF_UBEAT_0"+(id+1)+".mp3";
+                        
+                        var my_media = new Media(url,
+                            // success callback
+                            function () {
+                                //console.log("playAudio():Audio Success");
+                                my_media.release();
+                            },
+                            // error callback
+                            function (err) {
+                                //console.log("playAudio():Audio Error: " + err);
+                            }
+                        );
+                        // Play audio
+                        my_media.play();
+                        
+                    }else{
+                        if (listAudio[id].currentTime > 0 ) {
+                                listAudio[id].pause();
+                                listAudio[id].currentTime = 0;
+                                listAudio[id].play();
+                        }
+                        else{
+                                listAudio[id].play();
+                        }    
+                    }
+                    
+                    
+                    $("#timeMusic").html(counter++);
+                }
+                
+               
+                
+                if(bPHONEGAP) document.addEventListener("deviceready", onDeviceReady, false);
+                else {
+                    $(document).ready(function(){
+                        onDeviceReady();
+                    })    
+                }
+                
+                
+                function onDeviceReady() {
+                    window.addEventListener("touchmove",function(e){
+                        e.preventDefault();
+                    })
+                    
+                    $(".buttonMusic").bind("touchstart",function(){
+                    
+                        var tempid = $(this).attr("bsq-id");
+                        playSound(tempid);
+                        
+                        $(this).css({
+                            'background' : 'red'
+                        })
+                    })
+                    
+                    $(".buttonMusic").bind("touchend",function(){
+                        
+                        //var tempid = $(this).attr("bsq-id");
+                        //playSound(tempid);
+                        
+                        $(this).css({
+                            'background' : 'white'
+                        })
+                        
+                    })
+                }
+                
+                
+            </script>
+        </body>
 </html>
