@@ -6,10 +6,45 @@
     -webkit-user-select: none;
 }
 
-.panel1{
+.wrap{
+    position: relative;
+}
+.panel{
+    position: absolute;
+    
     width: 100%;
-    height: 768px;
-    background: gray;
+    height: 100%;
+}
+
+#panelIntro{
+    background: whitesmoke;
+    text-align: center;
+}
+#panelSelectStyle{
+    display: none;
+    text-align: center;
+}
+#panelGame{
+    display: none;
+}
+#panelReplay{
+    display: none;
+}
+#panelSend{
+    display: none;
+}
+#panelThank{
+    display: none;
+}
+#panelConfig{
+    display: none;
+}
+
+#panelIntro h1{
+    position: relative;
+    top:  50%;
+    
+    -webkit-transform: translateY(-50%);
 }
 
 .buttonMusic {
@@ -38,4 +73,14 @@
     margin: 10px;
     background: white;
     padding: 20px;
+    border: 1px solid black;
+}
+
+.buttonStyle{
+    width: 300px;
+    border: 1px solid gray;
+    height: 400px;
+    display: inline-block;
+    margin: 50px 10px;
+    text-align: center;
 }
