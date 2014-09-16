@@ -7,116 +7,137 @@
 	</head>
 
 	<body>
-	<div>                
-                <div class='panel1'>
-                    
-                    <div class='buttonMusic' bsq-id='0'>
-                        <!--<p>1</p>-->
-                    </div>
-                    <div class='buttonMusic' bsq-id='1'>
-                       <!-- <p>2</p>-->
-                    </div>
-                    <div class='buttonMusic' bsq-id='2'>
-                       <!-- <p>3</p>-->
-                    </div>
-                    
-                    <div class='buttonMusic' bsq-id='3'>
-                        <!--<p>4</p>-->
-                    </div>
-                    <div class='buttonMusic' bsq-id='4'>
-                       <!-- <p>5</p>-->
-                    </div>
-                    <div class='buttonMusic' bsq-id='5'>
-                       <!-- <p>6</p>-->
-                    </div>
-                    
-                    <p id='timeMusic'>Time</p>
-                    
-                </div>                
-                
-                
-                
-                
-        </div>
-            
-            <script>
-                var listAudio = [];
-                
-                listAudio[0] = new Audio("res/pang.mp3");
-                listAudio[1] = new Audio("res/pang.mp3");
-                listAudio[2] = new Audio("res/pang.mp3");
-            
-                listAudio[3] = new Audio("res/combi.mp3");
-                listAudio[4] = new Audio("res/combi.mp3");
-                listAudio[5] = new Audio("res/combi.mp3");
-                
-                $(listAudio[0]).bind('timeupdate',function(){
-                    
-                    //
-                    //if (listAudio[0].currentTime > 0.007 ) {
-                    //    listAudio[0].pause();
-                    //    listAudio[0].currentTime = 0;                            
-                    //}
-                })
-                
-                var counter = 0;
-                //var tempAudio = new Audio("res/pang.mp3");
-                function playSound(id){
-                                                        
-                    if (listAudio[id].currentTime > 0.007 ) {
-                            listAudio[id].pause();
-                            listAudio[id].currentTime = 0;
-                            listAudio[id].play();
-                    }
-                    else{
-                            listAudio[id].play();
-                    }
-                    
-                    $("#timeMusic").html(counter++);
-                }
-                
-                window.addEventListener("touchmove",function(e){
-                    e.preventDefault();
-                })
 		
-                document.addEventListener("deviceready", onDeviceReady, false);
-                $(document).ready(function(){
-                    
-                    //alert($(window).height())
-                    
-                })
+		<div class='panel1'>
+		    
+		    <div class='buttonMusic' bsq-id='0'>
+			<!--<p>1</p>-->
+		    </div>
+		    <div class='buttonMusic' bsq-id='1'>
+		       <!-- <p>2</p>-->
+		    </div>
+		    <div class='buttonMusic' bsq-id='2'>
+		       <!-- <p>3</p>-->
+		    </div>
+		    
+		    <div class='buttonMusic' bsq-id='3'>
+			<!--<p>4</p>-->
+		    </div>
+		    <div class='buttonMusic' bsq-id='4'>
+		       <!-- <p>5</p>-->
+		    </div>
+		    <div class='buttonMusic' bsq-id='5'>
+		       <!-- <p>6</p>-->
+		    </div>
+		    
+		    <p id='timeMusic'>Time</p>
+		    
+		</div>
+		
                 
-                
-                $(".buttonMusic").bind("touchstart",function(){
-                    
-                    var tempid = $(this).attr("bsq-id");
-                    playSound(tempid);
-                    
-                    $(this).css({
-                        'background' : 'red'
-                    })
-                })
-                
-                $(".buttonMusic").bind("touchend",function(){
-                    
-                    //var tempid = $(this).attr("bsq-id");
-                    //playSound(tempid);
-                    
-                    $(this).css({
-                        'background' : 'white'
-                    })
-                    
-                })
-                
-                //$(".buttonMusic").click(function(){
-                //    
-                //    playSound();
-                //    
-                //})
-                
-            </script>
+            
+	<script>
+	    var listAudio = [];
+	    //
+	    listAudio[0] = new Audio("res/pang.mp3");
+	    listAudio[1] = new Audio("res/pang.mp3");
+	    listAudio[2] = new Audio("res/pang.mp3");
+	    //
+	    listAudio[3] = new Audio("res/combi.mp3");
+	    listAudio[4] = new Audio("res/combi.mp3");
+	    listAudio[5] = new Audio("res/combi.mp3");
+	    
+	//    $(listAudio[0]).bind('timeupdate',function(){
+	//	
+	//	//
+	//	//if (listAudio[0].currentTime > 0.007 ) {
+	//	//    listAudio[0].pause();
+	//	//    listAudio[0].currentTime = 0;                            
+	//	//}
+	//    })
+	    
+	    var counter = 0;
+	    //var tempAudio = new Audio("res/pang.mp3");
+	    function playSound(id){
+			
+		playAudio("res/pang.mp3");
+						    
+		//if (listAudio[id].currentTime > 0.007 ) {
+		//	listAudio[id].pause();
+		//	listAudio[id].currentTime = 0;
+		//	listAudio[id].play();
+		//}
+		//else{
+		//	listAudio[id].play();
+		//}
+		
+		//$("#timeMusic").html(counter++);
+	    }
+	    //100,100000;
+	    
+	    
+	    document.addEventListener("deviceready", onDeviceReady, false);
+	//    $(document).ready(function(){
+	//	
+	//	//alert($(window).height())
+	//	
+	//    })
+	    function playAudio(url) {
+		// Play the audio file at url
+		var my_media = new Media(url,
+		    // success callback
+		    function () {
+			//console.log("playAudio():Audio Success");
+		    },
+		    // error callback
+		    function (err) {
+			//console.log("playAudio():Audio Error: " + err);
+		    }
+		);
+		// Play audio
+		my_media.play();
+	    }
+
+	    function onDeviceReady() {
+		
+		window.addEventListener("touchmove",function(e){
+			e.preventDefault();
+		    })
+		
+		$(".buttonMusic").bind("touchstart",function(){
+		
+			var tempid = $(this).attr("bsq-id");
+			playSound(tempid);
+			
+			$(this).css({
+			    'background' : 'red'
+			})
+		})
+		
+		$(".buttonMusic").bind("touchend",function(){
+		    
+		    //var tempid = $(this).attr("bsq-id");
+		    //playSound(tempid);
+		    
+		    $(this).css({
+			'background' : 'white'
+		    })
+		    
+		})
+	    }
+	    
+	    
+	    
+	    
+	    //$(".buttonMusic").click(function(){
+	    //    
+	    //    playSound();
+	    //    
+	    //})
+	    
+	</script>
         
-		<script type="text/javascript">
+		<!--<script type="text/javascript">
 
 			
 			
@@ -180,7 +201,7 @@
 			//	alert('Failed because: ' + message);
 			//}
 			
-		</script>
+		</script>-->
         
 	</body>
 
