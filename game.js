@@ -416,6 +416,11 @@ function onDeviceReady() {
         
         thankState();
     })
+    
+    $("#buttonCONFIG").bind('touchstart',function(){
+        
+        $("#panelConfig").fadeIn();
+    })
 }
 
 function introState() {
