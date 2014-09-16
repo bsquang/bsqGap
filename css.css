@@ -32,3 +32,10 @@
     transform: translateY(-50%) translateX(-50%);
     -webkit-transform: translateY(-50%) translateX(-50%);
 }
+
+.buttonTest{
+    float: left;
+    margin: 10px;
+    background: white;
+    padding: 20px;
+}
