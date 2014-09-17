@@ -418,8 +418,13 @@ function onDeviceReady() {
     })
     
     $("#buttonCONFIG").bind('touchstart',function(){
+        //var tempPass = prompt("Input password");
+        //if (tempPass == "a") {
+        //    $("#panelConfig").fadeIn();
+        //}
         
-        $("#panelConfig").fadeIn();
+         $("#panelConfig").fadeIn();
+        
     })
 }
 
