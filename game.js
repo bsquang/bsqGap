@@ -15,6 +15,9 @@ var interval = 1000 / 60,
 
 
 var soundBGM;
+var arrBGM = [];
+var currentBGM = 0;
+
 var dataRecord = [];
 
 var position = 0;
@@ -56,68 +59,42 @@ function gameLoop() {
 
         //$("#time").html(lastNote++);
 
-        updateTime();
 
-        if (!bPHONEGAP) {
-            $("#time").html(soundBGM.currentTime);
-        } else {
-
-
-            soundBGM.getCurrentPosition(
-                // success callback
-                function (position) {
-                    if (position > -1) {
-                        //$("#time").html(position*1000);
-                        //console.log((position) + " sec");
-                    }
-                },
-                // error callback
-                function (e) {
-                    //console.log("Error getting pos=" + e);
-                }
-            );
-        }
+        //if (!bPHONEGAP) {
+        //    
+        //   
+        //    
+        //} else {
+        //
+        //
+        //    soundBGM.getCurrentPosition(
+        //        // success callback
+        //        function (position) {
+        //            if (position > -1) {
+        //                //$("#time").html(position*1000);
+        //                //console.log((position) + " sec");
+        //            }
+        //        },
+        //        // error callback
+        //        function (e) {
+        //            //console.log("Error getting pos=" + e);
+        //        }
+        //    );
+        //}
         //
         if (bReplay) {
-
-            //    startTime();
-            //    if (updateTime()>100) {
-            //	
-            //	//for(var i=0;i<dataRecord.length;i++){
-            //	//	var tempRecord = dataRecord[i].split(",");
-            //	//	var tempTime = tempRecord[0];
-            //	//	var tempNote = tempRecord[1];
-            //	//	
-            //	//	var temp1 = parseInt(tempTime);
-            //	//	
-            //	//	
-            //	//	
-            //	//	if ((temp1-10) < position && (temp1+10) > position) {
-            //	//	    
-            //	//	    if (lastNote != i) {
-            //	//		
-            //	//		playSoundReplay(tempNote);
-            //	//		
-            //	//		console.log(temp1 + " " + parseInt(tempNote));
-            //	//		
-            //	//		lastNote = i;
-            //	//	    }						    
-            //	//	    
-            //	//	    
-            //	//	}
-            //	//    }
-            //    
-            //	position+=100;
-            //	
-            //	$("#time").html(position);
-            //	
-            //	stopTime();
-            //    }
-
+          
             var temp;
 
             if (!bPHONEGAP) {
                 temp = Math.round(soundBGM.currentTime * 1000);
+                
+                
+                var percent = temp/(soundBGM.duration*1000) * 100;                
+                percent = Math.round(percent);
+                
+                $("#time").html(percent);
+                $("#slider").width((percent*555/100)+"px");
 
                 for (var i = 0; i < dataRecord.length; i++) {
                     var tempRecord = dataRecord[i].split(",");
@@ -156,12 +133,10 @@ function gameLoop() {
                                 var tempNote = tempRecord[1];
 
                                 var temp1 = parseInt(tempTime);
-
-
-
+                                
                                 if ((temp1 - 10) < temp && (temp1 + 10) > temp) {
 
-                                    if (lastNote != i) {
+                                    if (lastNote == 0 || lastNote != i) {
 
                                         playSound(tempNote);
 
@@ -193,17 +168,23 @@ function gameLoop() {
 
 }
 
-
+var strSnd = [];
+strSnd[0] = "res/SOUND/snd-0.wav";
+strSnd[1] = "res/SOUND/snd-1.wav";
+strSnd[2] = "res/SOUND/snd-2.wav";
+strSnd[3] = "res/SOUND/snd-3.wav";
+strSnd[4] = "res/SOUND/beat-edm.wav";
+strSnd[5] = "res/SOUND/beat-hiphop.wav";
+strSnd[6] = "res/SOUND/beat-house.wav";
 
 var listAudio = [];
 
-listAudio[0] = new Audio("res/EF_UBEAT_01.mp3");
-listAudio[1] = new Audio("res/EF_UBEAT_02.mp3");
-listAudio[2] = new Audio("res/EF_UBEAT_03.mp3");
-
-listAudio[3] = new Audio("res/EF_UBEAT_04.mp3");
-listAudio[4] = new Audio("res/EF_UBEAT_05.mp3");
-listAudio[5] = new Audio("res/EF_UBEAT_06.mp3");
+listAudio[0] = new Audio(strSnd[0]);
+listAudio[1] = new Audio(strSnd[1]);
+listAudio[2] = new Audio(strSnd[2]);
+listAudio[3] = new Audio(strSnd[3]);
+//listAudio[4] = new Audio("res/EF_UBEAT_05.mp3");
+//listAudio[5] = new Audio("res/EF_UBEAT_06.mp3");
 
 
 
@@ -233,7 +214,7 @@ function playSound(id) {
         //beat[tempID].seekTo(0);
         //beat[tempID].play();
 
-        var url = "res/EF_UBEAT_0" + (tempID + 1) + ".mp3";
+        var url = strSnd[tempID];
 
         var my_media = new Media(url,
             // success callback
@@ -313,13 +294,10 @@ else {
 function onDeviceReady() {
 
     if (bPHONEGAP) {
-        beat[0] = new Media("res/EF_UBEAT_01.mp3", function () {}, function () {});
-        beat[1] = new Media("res/EF_UBEAT_02.mp3", function () {}, function () {});
-        beat[2] = new Media("res/EF_UBEAT_03.mp3", function () {}, function () {});
-
-        beat[3] = new Media("res/EF_UBEAT_04.mp3", function () {}, function () {});
-        beat[4] = new Media("res/EF_UBEAT_05.mp3", function () {}, function () {});
-        beat[5] = new Media("res/EF_UBEAT_06.mp3", function () {}, function () {});
+        beat[0] = new Media(strSnd[0], function () {}, function () {});
+        beat[1] = new Media(strSnd[1], function () {}, function () {});
+        beat[2] = new Media(strSnd[2], function () {}, function () {});
+        beat[3] = new Media(strSnd[3], function () {}, function () {});        
     }
 
     if (typeof (Storage) !== "undefined") {
@@ -355,9 +333,9 @@ function onDeviceReady() {
         var tempid = $(this).attr("bsq-id");
         playSound(tempid);
 
-        $(this).css({
-            'background': 'red'
-        })
+        //$(this).css({
+        //    'background': 'red'
+        //})
     })
 
     $(".buttonMusic").bind("touchend", function () {
@@ -365,46 +343,49 @@ function onDeviceReady() {
         //var tempid = $(this).attr("bsq-id");
         //playSound(tempid);
 
-        $(this).css({
-            'background': 'white'
-        })
+        //$(this).css({
+        //    'background': 'white'
+        //})
 
     })
 
-    $(soundBGM).bind('ended', function () {
-
-        stopMusic();
-
-    })
+    //$(soundBGM).bind('ended', function () {
+    //    stopMusic();
+    //})
 
     if (!bPHONEGAP) {
-        soundBGM = new Audio("res/BG_UBEAT_140_1.mp3");
+        
+        arrBGM[0] = new Audio(strSnd[4]);
+        arrBGM[1] = new Audio(strSnd[5]);
+        arrBGM[2] = new Audio(strSnd[6]);
+        
+        soundBGM = arrBGM[currentBGM];
+        
     } else {
-
-        soundBGM = new Media("res/BG_UBEAT_140_1.mp3",
-            // success callback
-            function () {
-                //console.log("playAudio():Audio Success");
-                stopMusic();
-            },
-            // error callback
-            function (err) {
-                //console.log("playAudio():Audio Error: " + err);
-            }
-        );
+        
+        arrBGM[0] = new Media(strSnd[4], function () {}, function () {});
+        arrBGM[1] = new Media(strSnd[5], function () {}, function () {});
+        arrBGM[2] = new Media(strSnd[6], function () {}, function () {});
+        
+        soundBGM = arrBGM[currentBGM];
 
     }
 
     gameLoop();
     
-    alert("Load done!");
+    //alert("Load done!");
     
     introState();
     
     $(".buttonStyle").bind('touchstart',function(){
         var tempID = $(this).attr('style-id');
         
+        soundBGM = arrBGM[tempID];
+        
+        currentBGM = tempID;
+        
         gotoScene("#panelGame");
+        startRecord();
     })
     
     $("#doneReplay").bind('touchstart',function(){
@@ -412,18 +393,19 @@ function onDeviceReady() {
         gotoScene("#panelSend");
     })
     
-    $("#doneSend").bind('touchstart',function(){
-        
-        thankState();
-    })
+    //$("#doneSend").bind('touchstart',function(){
+    //    
+    //    thankState();
+    //})
     
     $("#buttonCONFIG").bind('touchstart',function(){
-        //var tempPass = prompt("Input password");
-        //if (tempPass == "a") {
-        //    $("#panelConfig").fadeIn();
-        //}
+        var tempPass = prompt("Input password");
+        if (tempPass == "a") {
+            $("#panelConfig").fadeIn();
+        }
         
-         $("#panelConfig").fadeIn();
+        
+        //$("#panelConfig").fadeIn();
         
     })
 }
@@ -435,7 +417,12 @@ function introState() {
     },2000)
 }
 
+
 function thankState(){
+    
+    document.activeElement.blur();
+    
+    resetGame();
     gotoScene("#panelThank");
     setTimeout(function(){
         introState();
@@ -447,19 +434,40 @@ function gotoScene(id){
     $(id).show();
 }
 
+
+function resetGame(){
+    
+    dataRecord = [];
+    lastNote = 0;
+    
+    
+    stopMusic();
+}
+
+
 var bRecord = false;
 
 function startRecord() {
 
     bRecord = true;
-
     soundBGM.play();
 }
 
 var bReplay = false;
 
 function stopMusic() {
-
+    
+    
+    soundBGM.pause();
+    if (!bPHONEGAP) {
+        if (soundBGM.currentTime != 0) {
+            soundBGM.currentTime = 0;    
+        }
+        
+    } else {
+        soundBGM.seekTo(0);
+    }
+    
     if (bRecord) {        
         bRecord = false;
     }
@@ -470,6 +478,7 @@ function stopMusic() {
 }
 
 function stopRecord() {
+
 
     soundBGM.pause();
 
@@ -487,9 +496,18 @@ function stopRecord() {
 }
 
 function startReplay() {
-    soundBGM.play();
-
-    bReplay = true;
+    if (!bReplay) {
+        
+        soundBGM.play();
+        $("#icon3").fadeIn();
+        $("#slider").fadeIn();
+        bReplay = true;
+        
+    }else{
+        stopMusic();
+        $("#icon3").fadeOut();
+    }
+    
 }
 
 

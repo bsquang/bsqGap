@@ -6,9 +6,28 @@
     -webkit-user-select: none;
 }
 
+input{
+    -webkit-user-select: auto;
+    
+    position: absolute;
+    
+    height: 38px;
+    width: 400px;
+    /* padding-right: 10px; */
+    font-size: 25px;
+    background: none;
+    color: white;
+    border: none;
+}
+
 .wrap{
     overflow: hidden;
+    background: url('res/BGR.png');
+    width: 100%;
+    height: 768px;
+    color: white;
 }
+
 .panel{
     position: absolute;
     
@@ -16,9 +35,9 @@
     height: 100%;
 }
 
-#panelIntro{
-    background: whitesmoke;
+#panelIntro{    
     text-align: center;
+    display: none;
 }
 #panelSelectStyle{
     display: none;
@@ -35,6 +54,7 @@
 }
 #panelThank{
     display: none;
+    text-align: center;
 }
 #panelConfig{
     display: none;
@@ -42,24 +62,58 @@
     background: black;
 }
 
-#panelIntro h1{
+#panelThank h1{
     position: relative;
     top:  50%;
     
     -webkit-transform: translateY(-50%);
+    
+    z-index: 99;
 }
 
 .buttonMusic {
     width: 250px;
     height: 250px;
-    float: left;
-    background: white;
-    border: 1px solid black;
-    margin: 10px;
     
-    font-size: 60px;    
-    position: relative;
+    /*background: rgba(255, 255, 255, 0.25);    */
     
+    position: absolute;
+    
+}
+
+#mainGame{
+    position: absolute;
+    left: 40px;
+    top: 220px;
+    
+    -webkit-transform: scale(1.3);
+}
+
+#button1{
+    left: 0px;
+    top: 100px;
+    width: 280px;
+    height: 260px;
+}
+#button2{
+    width: 40px;height: 120px;background: #f8e703;position: absolute;left: 295px;top: 180px;border-radius: 10px;
+}
+#button3{
+    width: 40px;height: 120px;background: #f8e703;position: absolute;left: 392px;top: 180px;border-radius: 10px;
+}
+#button4{
+    left: 450px;
+    top: 100px;
+    width: 280px;
+    height: 260px;
+}
+
+#button5{
+    display: none;
+}
+
+#button6{
+    display: none;
 }
 
 
@@ -81,18 +135,64 @@
 }
 
 .buttonStyle{
-    width: 300px;
-    border: 1px solid gray;
+    width: 300px;    
     height: 400px;
-    display: inline-block;
-    margin: 50px 10px;
+    display: inline-block;    
     text-align: center;
 }
 
-@media only screen 
-and (min-device-width : 320px) 
-and (max-device-width : 568px)
+.sprite-dj{
+    position: absolute;   
+}
+
+.player{
+    position: absolute;
+    left: 90px;
+    top: 200px;
+    
+    -webkit-transform: scale(1.2);
+    
+}
+.player img{
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+#icon{
+    left:62px;
+    top:142px;
+}
+#icon2{
+    left:47px;
+    top:126px;
+}
+#icon3{
+    left:48px;
+    top:119px;
+    display: none;
+}
+#icon4{
+    left:30px;
+    top:110px;
+}
+
+.player-slider{
+    background: #f8e703;
+    width: 1px; /*550px*/
+    height: 23px;
+    position: absolute;
+    left: 118px;
+    top: 146px;
+    border-radius: 30px;
+    display: none;
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 568px)
 {
+    .wrap{
+        height: 320px;
+    }
     .buttonMusic {
         width: 120px;
         height: 120px;
@@ -100,12 +200,33 @@ and (max-device-width : 568px)
         margin: 1px;
     }
     
+    #mainGame{
+        -webkit-transform: scale(0.5);
+        left: 105px;
+        top: 80px;
+    }
+    
     .buttonStyle{
-        width: 130px;
-        border: 1px solid gray;
+        width: 130px;        
         height: 130px;
         display: inline-block;
         margin-top: 20px;
         text-align: center;
+    }
+    
+    .player{
+        left: 108px;
+        top: 90px;
+        -webkit-transform: scale(0.5);
+    }
+    
+    .formSend{
+        -webkit-transform: scale(0.5);
+        position: absolute;
+        left: 45px;
+        top: -20px;
+    }
+    #panelThank h1{
+        font-size: 20px;
     }
 }
