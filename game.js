@@ -399,7 +399,6 @@ function onDeviceReady() {
         soundBGM = arrBGM[tempID];
         currentBGM = tempID;
         
-        currentDuration = getAtLastDuration();        
         
         
         $(".posterStyle").hide();
@@ -476,24 +475,25 @@ function onDeviceReady() {
     })
 }
 
-var currentDuration = 0;
-function getAtLastDuration(){
-    if (bPHONEGAP) {
-        var temp = soundBGM.getDuration();
-        
-        if (temp < 0) {
-            
-            return getAtLastDuration();
-            
-        }else
-        {
-            return temp;
-        }
-    }
-    
-    else return soundBGM.duration;
-    
-}
+//FAIL 0546 180914
+//var currentDuration = 0;
+//function getAtLastDuration(){
+//    if (bPHONEGAP) {
+//        var temp = soundBGM.getDuration();
+//        
+//        if (temp < 0) {
+//            
+//            return getAtLastDuration();
+//            
+//        }else
+//        {
+//            return temp;
+//        }
+//    }
+//    
+//    else return soundBGM.duration;
+//    
+//}
 
 var bTutorial = true;
 var stepTut = 0;
@@ -759,7 +759,7 @@ function checkNote(){
                         temp = (position * 1000);
                         
                         
-                        var percent = temp/(currentDuration*1000) * 100;                
+                        var percent = temp/(soundBGM.getDuration()*1000) * 100;                
                         percent = Math.round(percent);
                         
                         if (percent >= 100) {
@@ -830,7 +830,7 @@ function checkNote(){
                     if (position > -1) {
                         temp = (position * 1000);
                               
-                        var percent = temp/(currentDuration*1000) * 100;                
+                        var percent = temp/(soundBGM.getDuration()*1000) * 100;                
                         percent = Math.round(percent);
                         
                         
