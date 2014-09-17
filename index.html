@@ -13,28 +13,40 @@
 	</head>
 	<body>
         <div class='wrap'>
-            
+            <div class='overlay'></div>
             <div class='panel' id='panelIntro'>
                 
                 <img src='res/TITLE.png' style='position: absolute;left: 0;top: 50%;-webkit-transform: translateY(-50%);width: 100%;'>
                 
             </div>
             <div class='panel' id='panelSelectStyle'>
-                
-                <h1 style='margin-top: 50px;'>Hãy chọn dòng nhạc bạn thích</h1>
-                <div class='buttonStyle' style-id='0' style='background: url("res/POSTER_EDM.png") 50% 50%'></div>
-                <div class='buttonStyle' style-id='1' style='background: url("res/POSTER_HIPHOP.png") 50% 50%'></div>
-                <div class='buttonStyle' style-id='2' style='background: url("res/POSTER_HOUSE.png") 50% 50%'></div>
+				<div class='menu'>
+					<div class='menuRight'>
+						<div class='buttonStyle' style-id='0' style='background: url("res/BT_EDM.png")'></div>
+						<div class='buttonStyle' style-id='1' style='background: url("res/BT_HIPHOP.png")'></div>
+						<div class='buttonStyle' style-id='2' style='background: url("res/BT_HOUSE.png")'></div>	
+					</div>
+					<div class='menuLeft'>
+						<div class='posterStyle' style-id='0' style='background: url("res/POSTER_EDM.png")'></div>
+						<div class='posterStyle' style-id='1' style='background: url("res/POSTER_HIPHOP.png");display: none;'></div>
+						<div class='posterStyle' style-id='2' style='background: url("res/POSTER_HOUSE.png");display: none;'></div>	
+					</div>
+                </div>
             </div>
             <div class='panel' id='panelGame'>
-                <div id='mainGame'>
+                
+				<img src='res/SOUNDWAVE.png' class='sprite-wave'>
+					
+				<div id='mainGame'>
                     
                     <img src='res/SPRITE_DJ.png' class='sprite-dj'>
                     
-                    <div class='buttonMusic' bsq-id='0' id='button1'></div>
-                    <div class='buttonMusic' bsq-id='1' id='button2'></div>
-                    <div class='buttonMusic' bsq-id='2' id='button3'></div>
-                    <div class='buttonMusic' bsq-id='3' id='button4'></div>
+					<div class='buttonRecord animate'></div>
+					
+                    <div class='buttonMusic animate bounce-red' bsq-id='0' id='button1'></div>
+                    <div class='buttonMusic animate' bsq-id='1' id='button2'></div>
+                    <div class='buttonMusic animate' bsq-id='2' id='button3'></div>
+                    <div class='buttonMusic animate' bsq-id='3' id='button4'></div>
                     <div class='buttonMusic' bsq-id='4' id='button5'></div>
                     <div class='buttonMusic' bsq-id='5' id='button6'></div>
                     
@@ -60,6 +72,12 @@
                     <div ontouchstart='startReplay()' style='width: 100px;height: 100px;position: absolute;left: 35px;top: 105px;'></div>
                 </div>
                 
+				<div class='confirmSend'>
+					<img src='res/POPUP.png' />
+					<div ontouchstart='thankState()' class='confirmButton' style='left:55px;top:128px;'></div>
+					<div ontouchstart='sendState()' class='confirmButton' style='left:370px;top:128px;'></div>
+				</div>
+				
                 
             </div>
             <div class='panel' id='panelSend'>
@@ -69,7 +87,7 @@
                     <input type='text' value='' placeholder='test@gmail.com' id='userEmail' style='left: 330px;top: 314px;' />
                     <input type='text' value='' placeholder='0123456789' id='userTel' style='left: 330px;top: 434px;' />
                     
-                    <div ontouchstart="thankState()" style='position: absolute;left: 420px;top: 525px;width: 190px;height:100px;'></div>
+                    <div ontouchstart="sendAction()" style='position: absolute;left: 420px;top: 525px;width: 190px;height:100px;'></div>
                 </div>
             </div>
             <div class='panel' id='panelThank'>
@@ -79,7 +97,7 @@
                 <p class='buttonTest' ontouchstart='reload()'>Reload</p>
             </div>
             <p id='time'>Time</p>
-            <p class='buttonTest' id='buttonCONFIG' style='position: fixed;right: 0;top: 0;'>Config</p>
+            <p class='buttonTest' id='buttonCONFIG' style='position: fixed;right: 0;top: 0;'></p>
         </div>
         
         <script type="text/javascript" src="game.js"></script>
