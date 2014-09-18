@@ -197,13 +197,16 @@ strSnd[0] = "res/SOUND/snd-0.mp3";
 strSnd[1] = "res/SOUND/snd-1.mp3";
 strSnd[2] = "res/SOUND/snd-2.mp3";
 strSnd[3] = "res/SOUND/snd-3.mp3";
-strSnd[4] = "res/SOUND/beat-edm.mp3";
-strSnd[5] = "res/SOUND/beat-hiphop.mp3";
-strSnd[6] = "res/SOUND/beat-house.mp3";
+strSnd[4] = "res/SOUND/snd-4.mp3";
+strSnd[5] = "res/SOUND/snd-5.mp3";
 
-strSnd[7] = "res/SOUND/voice-1.mp3";
-strSnd[8] = "res/SOUND/voice-2.mp3";
-strSnd[9] = "res/SOUND/voice-3.mp3";
+strSnd[6] = "res/SOUND/beat-edm.mp3";
+strSnd[7] = "res/SOUND/beat-hiphop.mp3";
+strSnd[8] = "res/SOUND/beat-house.mp3";
+
+strSnd[9] = "res/SOUND/voice-1.mp3";
+strSnd[10] = "res/SOUND/voice-2.mp3";
+strSnd[11] = "res/SOUND/voice-3.mp3";
 
 var listAudio = [];
 
@@ -323,20 +326,24 @@ function onDeviceReady() {
         beat[1] = new Media(strSnd[1], function () {}, function () {});
         beat[2] = new Media(strSnd[2], function () {}, function () {});
         beat[3] = new Media(strSnd[3], function () {}, function () {});
+        beat[4] = new Media(strSnd[4], function () {}, function () {});
+        beat[5] = new Media(strSnd[5], function () {}, function () {});
         
-        arrVOICE[0] = new Media(strSnd[7], function () {}, function () {});
-        arrVOICE[1] = new Media(strSnd[8], function () {}, function () {});
-        arrVOICE[2] = new Media(strSnd[9], function () {}, function () {});
+        arrVOICE[0] = new Media(strSnd[9], function () {}, function () {});
+        arrVOICE[1] = new Media(strSnd[10], function () {}, function () {});
+        arrVOICE[2] = new Media(strSnd[11], function () {}, function () {});
     }else{
         
         listAudio[0] = new Audio(strSnd[0]);
         listAudio[1] = new Audio(strSnd[1]);
         listAudio[2] = new Audio(strSnd[2]);
         listAudio[3] = new Audio(strSnd[3]);
+        listAudio[4] = new Audio(strSnd[4]);
+        listAudio[5] = new Audio(strSnd[5]);
         
-        arrVOICE[0] = new Audio(strSnd[7]);
-        arrVOICE[1] = new Audio(strSnd[8]);
-        arrVOICE[2] = new Audio(strSnd[9]);
+        arrVOICE[0] = new Audio(strSnd[9]);
+        arrVOICE[1] = new Audio(strSnd[10]);
+        arrVOICE[2] = new Audio(strSnd[11]);
         
     }
 
@@ -368,17 +375,17 @@ function onDeviceReady() {
 
     if (!bPHONEGAP) {
         
-        arrBGM[0] = new Audio(strSnd[4]);
-        arrBGM[1] = new Audio(strSnd[5]);
-        arrBGM[2] = new Audio(strSnd[6]);
+        arrBGM[0] = new Audio(strSnd[6]);
+        arrBGM[1] = new Audio(strSnd[7]);
+        arrBGM[2] = new Audio(strSnd[8]);
         
         soundBGM = arrBGM[currentBGM];
         
     } else {
         
-        arrBGM[0] = new Media(strSnd[4], function () {}, function () {});
-        arrBGM[1] = new Media(strSnd[5], function () {}, function () {});
-        arrBGM[2] = new Media(strSnd[6], function () {}, function () {});
+        arrBGM[0] = new Media(strSnd[6], function () {}, function () {});
+        arrBGM[1] = new Media(strSnd[7], function () {}, function () {});
+        arrBGM[2] = new Media(strSnd[8], function () {}, function () {});
         
         soundBGM = arrBGM[currentBGM];
 
@@ -454,7 +461,7 @@ function onDeviceReady() {
                 
                 stepTut++;
                 
-                if (stepTut == 4) {
+                if (stepTut == 6) {
                     
                     $(".buttonRecord").addClass('bounce-zoom');
                     

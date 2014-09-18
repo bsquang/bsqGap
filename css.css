@@ -126,7 +126,7 @@ input{
 #button1{
     left: 0px;
     top: 100px;
-    width: 280px;
+    width: 136px;
     height: 260px;
 }
 #button2{
@@ -138,16 +138,22 @@ input{
 #button4{
     left: 450px;
     top: 100px;
-    width: 280px;
+    width: 136px;
     height: 260px;
 }
 
 #button5{
-    display: none;
+    width: 136px;
+    height: 260px;
+    left: 140px;
+    top: 100px;
 }
 
 #button6{
-    display: none;
+    width: 136px;
+    height: 260px;
+    left: 590px;
+    top: 100px;
 }
 
 
