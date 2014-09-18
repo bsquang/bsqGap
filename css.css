@@ -1,9 +1,16 @@
+@font-face {
+    font-family: "GOTHAM";
+    src: url("res/font.ttf");
+}
+
 *{
     padding: 0;
     margin: 0;
     
     box-sizing: border-box;
     -webkit-user-select: none;
+    
+    font-family: "GOTHAM";
 }
 
 input{
@@ -26,6 +33,7 @@ input{
     width: 100%;
     height: 768px;
     color: white;
+    background-size: cover;
 }
 .overlay{
     position: absolute;
@@ -55,6 +63,9 @@ input{
 #panelReplay{
     display: none;
 }
+#panelConfirm{
+    display: none;
+}
 #panelSend{
     display: none;
 }
@@ -64,8 +75,8 @@ input{
 }
 #panelConfig{
     display: none;
-    
-    background: black;
+    padding: 10px;
+    background: gray;
 }
 
 #panelThank h1{
@@ -79,13 +90,18 @@ input{
 
 @-webkit-keyframes BOUNCE-RED-ANI {
   0%   { background: none; }
-  50%   { background: red; }
+  50%   { background: #f8e703; }
   100% { background: none; }
 }
 @-webkit-keyframes BOUNCE-ZOOM-ANI {
   0%   { -webkit-transform: scale(1); }
   50%   { -webkit-transform: scale(0.5); }
   100% { -webkit-transform: scale(1); }
+}
+@-webkit-keyframes BOUNCE-OPA-ANI {
+  0%   { opacity: 0; }
+  50%   { opacity: 1; }
+  100% { opacity: 0; }
 }
 .animate{
     -webkit-transform-origin: center;        
@@ -96,6 +112,9 @@ input{
 .bounce-zoom{
     -webkit-animation: BOUNCE-ZOOM-ANI 1s infinite; /* Safari 4+ */
 }
+.bounce-opacity{
+    -webkit-animation: BOUNCE-OPA-ANI 1s infinite;
+}
 .buttonMusic {
     width: 250px;
     height: 250px;
@@ -105,14 +124,40 @@ input{
     position: absolute;
     
 }
+.buttonNext{
+    position: absolute;
+    right: 20px;
+    top: 316px;
+    width: 56px;
+    height: 123px;
+    background: url('res/ICON_NEXT.png');
+    display: none;
+}
+.buttonTut{
+    background: rgb(68, 68, 68);
+    padding: 20px;
+    position: absolute;
+    right: 40px;
+    top: 100px;
+    border-radius: 10px;
+    font-size: 20px;
+}
 
 .buttonRecord{
     width: 100px;
     height: 50px;
     position: absolute;
-    background: red;
+    background: #f8e703;
     left: 312px;
     border-radius: 20px;
+    
+    display: none;
+}
+
+.buttonBSQ{
+    padding: 10px;
+    border: 1px solid black;
+    margin-bottom: 10px;
 }
 
 #mainGame{
@@ -131,9 +176,11 @@ input{
 }
 #button2{
     width: 40px;height: 120px;background: #f8e703;position: absolute;left: 295px;top: 180px;border-radius: 10px;
+    display: none;
 }
 #button3{
     width: 40px;height: 120px;background: #f8e703;position: absolute;left: 392px;top: 180px;border-radius: 10px;
+    display: none;
 }
 #button4{
     left: 450px;
@@ -159,8 +206,19 @@ input{
 
 .sprite-wave{
     position: absolute;
-    top: 60px;
-    width: 100%;
+    top: 30px;
+    width: 1024px;
+    height: 161px;
+    
+    background: url('res/WAVE-1.png');
+}
+.sprite-wave-overlay{
+    position: absolute;
+    top: 30px;
+    width: 1px;
+    height: 161px;
+    
+    background: url('res/WAVE-2.png');
 }
 .buttonMusic p{
     position: absolute;
@@ -184,7 +242,14 @@ input{
 }
 .buttonStyle{
     width: 145px;    
-    height: 79px;    
+    height: 79px;
+    position: absolute;
+}
+.buttonOverlay{
+    width: 145px;    
+    height: 79px;
+    position: absolute;
+    display: none;
 }
 
 .posterStyle{
@@ -254,9 +319,7 @@ input{
 .confirmSend{
     position: absolute;
     left: 230px;
-    top: 410px;
-    
-    display: none;
+    top: 235px;
 }
 
 .confirmButton{
@@ -269,6 +332,21 @@ input{
     height: 45px;
 }
 
+.listUser{
+    background: whitesmoke;
+    padding: 10px;
+    border: 1px solid black;
+    color: black;
+}
+.buttonPause{
+    width: 141px;
+    height: 42px;
+    position: absolute;
+    left: 538px;
+    top: 173px;
+    background: url("res/btn-replay.png");
+    background-size: cover;
+}
 @media only screen and (min-device-width : 320px) and (max-device-width : 568px)
 {
     .wrap{
@@ -292,18 +370,32 @@ input{
         left:  90px;
         top:  16px;
     }
+    .buttonNext{
+        right: 10px;
+        top: 103px;
+        width: 40px;
+        height: 88px;
+        background: url('res/ICON_NEXT.png');
+        background-size: contain;
+    }
     
+    .sprite-wave{
+        display: none;
+    }
+    .sprite-wave-overlay{
+        display: none;
+    }
     
     .player{
-        left: 108px;
+        left: 38px;
         top: 60px;
-        -webkit-transform: scale(0.5);
+        -webkit-transform: scale(0.7);
     }
     
     .confirmSend{
         -webkit-transform: scale(0.5);
         left: 0px;
-        top: 120px;
+        top: 50px;
     }
     
     .formSend{
