@@ -193,9 +193,9 @@ var lastNote;
 
 var strSnd = [];
 strSnd[0] = "res/SOUND/snd-0.mp3";
-strSnd[1] = "res/SOUND/snd-1.mp3";
-strSnd[2] = "res/SOUND/snd-4.mp3";
-strSnd[3] = "res/SOUND/snd-5.mp3";
+strSnd[1] = "res/SOUND/snd-2.mp3";
+strSnd[2] = "res/SOUND/snd-3.mp3";
+strSnd[3] = "res/SOUND/snd-1.mp3";
 strSnd[4] = "res/SOUND/snd-4.mp3";
 strSnd[5] = "res/SOUND/snd-5.mp3";
 
@@ -346,9 +346,9 @@ function onDeviceReady() {
 
     if (!bPHONEGAP) {
 
-        arrBGM[0] = new Audio(strSnd[6]);
-        arrBGM[1] = new Audio(strSnd[7]);
-        arrBGM[2] = new Audio(strSnd[8]);
+        arrBGM[0] = new Audio(strSnd[6]); arrBGM[0].volume = 0.5;
+        arrBGM[1] = new Audio(strSnd[7]); arrBGM[1].volume = 0.5;
+        arrBGM[2] = new Audio(strSnd[8]); arrBGM[2].volume = 0.5;
 
         soundBGM = arrBGM[currentBGM];
 
@@ -357,7 +357,11 @@ function onDeviceReady() {
         arrBGM[0] = new Media(strSnd[6], function() {}, function() {});
         arrBGM[1] = new Media(strSnd[7], function() {}, function() {});
         arrBGM[2] = new Media(strSnd[8], function() {}, function() {});
-
+        
+        arrBGM[0].setVolume(0.5);
+        arrBGM[1].setVolume(0.5);
+        arrBGM[2].setVolume(0.5);
+        
         soundBGM = arrBGM[currentBGM];
 
     }
@@ -418,6 +422,8 @@ function onDeviceReady() {
 
         }
     })
+    
+    
 
     $(".buttonRecord").bind('touchstart', function() {
 
@@ -546,44 +552,27 @@ function sendAction() {
         "record": tempRecord
     };
     
-    if (window.navigator.onLine) {
-        
-        ajaxSend(db, function(msg){
-            
-            if (JSON.parse(msg).result == 1) {
-                thankState();
-            }
-            
-        });
-        
-    }else{
-        
-        localStorage.setItem(localStorage.length, JSON.stringify(db));
-        thankState();        
-    }
-
+    //if (window.navigator.onLine) {
+    //    
+    //    ajaxSend(db, function(msg){
+    //        
+    //        if (JSON.parse(msg).result == 1) {
+    //            thankState();
+    //        }
+    //        
+    //    });
+    //    
+    //}else{
+    //    
+    //    localStorage.setItem(localStorage.length, JSON.stringify(db));
+    //    thankState();        
+    //}
     
-
+    localStorage.setItem(localStorage.length, JSON.stringify(db));
+    thankState();
     
 }
-function ajaxSend(entry, callback){
-    $.ajax({
-        type:'POST',
-        url:'http://bsq.cherryvietnam.com/goldworld/ajax.php',
-        data:{
-            'dj':'1',
-            'name':entry.name,
-            'email':entry.email,
-            'phone':entry.tel,
-            'style':entry.style,
-            'data':entry.record
-        },
-        success:function(msg){
-           
-           callback(msg);
-           
-        }});
-}
+
 
 function thankState() {
 
@@ -951,7 +940,35 @@ function loadUser() {
         //    var temp = "<p>" + localStorage[i] + "</p>";
         //    $(".listUser").append(temp);
         //}
+        
+        $("#buttonSendAjax").text("Send to server " + "("+localStorage.length+")");
+    }   
+    
+}
+
+function sendAjaxDB(){
+    var tempArray = [];
+    for (var i = 0; i < localStorage.length; i++) {
+        tempArray.push(JSON.parse(localStorage[i]));
     }
     
-    
+    $.ajax({
+        type:'POST',
+        url:'http://bsq.cherryvietnam.com/goldworld/ajax.php',
+        data:{            
+            'dbdj':JSON.stringify(tempArray)            
+        },
+        success:function(msg){
+           var temp = JSON.parse(msg);
+            
+           if (temp.result == "1") {
+            
+                alert("Done to send server");
+                $("#buttonSendAjax").text("None");
+                
+                localStorage.clear();
+           }
+           
+           
+    }});
 }
