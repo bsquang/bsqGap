@@ -57,6 +57,9 @@
 			<div id='mainGame'>
 	    
 			    <img src='res/SPRITE_DJ.png' class='sprite-dj'>
+					
+				<img src='res/DISC.png' class='sprite-disc animate rotate' style='left: 5px;top: 99px;' />
+				<img src='res/DISC.png' class='sprite-disc animate rotate' style='left: 457px;top: 99px;' />
 	    
 			    <div class='buttonRecord animate'>
 				<p style='margin-top: 15px;text-align: center;color: rgb(83, 83, 83);'>Bắt đầu</p>
@@ -77,16 +80,20 @@
 			<p class='buttonTest' id='doneReplay' style='display: none'>Done</p>
 	    
 			<div class='player'>
-			    <img src='res/PLAYER/icon5.png' id='icon5' />
-			    <img src='res/PLAYER/icon4.png' id='icon4' />
+				<img src='res/SPRITE_PLAYER.png' style='width:770px' />
+			    <!--<img src='res/PLAYER/icon5.png' id='icon5' />
+			    <img src='res/PLAYER/icon4.png' id='icon4' />-->
 			    <div class='player-slider' id='slider'></div>
-			    <img src='res/PLAYER/icon3.png' id='icon3' />
+			    <!--<img src='res/PLAYER/icon3.png' id='icon3' />
 			    <img src='res/PLAYER/icon2.png' id='icon2' />
-			    <img src='res/PLAYER/icon.png' class='animate bounce-opacity' id='icon' />
+			    <img src='res/PLAYER/icon.png' id='icon' />-->
 	    
 			    <div class="buttonPause" ontouchstart='pauseReplay()'></div>
-			    <div ontouchstart='startReplay()' style='width: 100px;height: 100px;position: absolute;left: 35px;top: 105px;'></div>
-			</div>	    
+			    <div ontouchstart='startReplay()' style='width: 80px;height: 70px;position: absolute;left: 35px;top: 93px;'></div>
+				
+				
+			</div>
+			<p class='textReplay' >Hãy cùng thưởng thức tác phẩm của bạn</p>
 		    </div>
 		    
 		    <div class='panel' id='panelConfirm'>

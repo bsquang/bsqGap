@@ -7,10 +7,10 @@
 
     <!-- versionCode is optional and Android only -->
 
-    <name>bsqApp</name>
+    <name>TROTAIDJ</name>
 
     <description>
-        An example for bsq phonegap. 
+        A music game with DJ Simulator.
     </description>
 
     <author href="http://www.cherryvietnam.com" email="thisisacherryvn@gmail.com">

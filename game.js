@@ -454,10 +454,28 @@ function onDeviceReady() {
 
             }
         }
+        
+        if (tempid == 0 || tempid == 1) {
+            $($(".sprite-disc")[0]).addClass("pauseAni");
+        }
+        if (tempid == 2 || tempid == 3) {
+            $($(".sprite-disc")[1]).addClass("pauseAni");
+        }
 
         playSound(tempid);
 
     })
+    
+    $(".buttonMusic").bind("touchend", function() {
+        var tempid = $(this).attr("bsq-id");
+        
+       if (tempid == 0 || tempid == 1) {
+            $($(".sprite-disc")[0]).removeClass("pauseAni");
+        }
+        if (tempid == 2 || tempid == 3) {
+            $($(".sprite-disc")[1]).removeClass("pauseAni");
+        }
+    });
 }
 
 //FAIL 0546 180914
@@ -527,10 +545,44 @@ function sendAction() {
         "tel": usertel,
         "record": tempRecord
     };
+    
+    if (window.navigator.onLine) {
+        
+        ajaxSend(db, function(msg){
+            
+            if (JSON.parse(msg).result == 1) {
+                thankState();
+            }
+            
+        });
+        
+    }else{
+        
+        localStorage.setItem(localStorage.length, JSON.stringify(db));
+        thankState();        
+    }
 
-    localStorage.setItem(localStorage.length, JSON.stringify(db));
+    
 
-    thankState();
+    
+}
+function ajaxSend(entry, callback){
+    $.ajax({
+        type:'POST',
+        url:'http://bsq.cherryvietnam.com/goldworld/ajax.php',
+        data:{
+            'dj':'1',
+            'name':entry.name,
+            'email':entry.email,
+            'phone':entry.tel,
+            'style':entry.style,
+            'data':entry.record
+        },
+        success:function(msg){
+           
+           callback(msg);
+           
+        }});
 }
 
 function thankState() {
@@ -798,7 +850,7 @@ function checkNote() {
             percent = Math.round(percent);
 
 
-            $("#slider").width((percent * 555 / 100) + "px");
+            $("#slider").width((percent * 460 / 100) + "px");
 
             if (percent >= 100) {
                 bBreak = true;
@@ -843,7 +895,7 @@ function checkNote() {
                         percent = Math.round(percent);
 
 
-                        $("#slider").width((percent * 555 / 100) + "px");
+                        $("#slider").width((percent * 460 / 100) + "px");
 
                         if (percent >= 100) {
                             bBreak = true;
