@@ -150,7 +150,7 @@ input{
     background: rgb(68, 68, 68);
     padding: 20px;
     position: absolute;
-    right: 40px;
+    right: 240px;
     top: 100px;
     border-radius: 10px;
     font-size: 20px;
@@ -393,6 +393,9 @@ input{
         -webkit-transform: scale(0.5);
         left:  90px;
         top:  16px;
+    }
+    .buttonTut{
+        display: none;
     }
     .buttonNext{
         right: 10px;

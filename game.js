@@ -344,6 +344,8 @@ function onDeviceReady() {
     })
 
 
+   
+
     if (!bPHONEGAP) {
 
         arrBGM[0] = new Audio(strSnd[6]); arrBGM[0].volume = 0.5;
@@ -673,6 +675,12 @@ function startReplay() {
         $("#slider").fadeIn();
 
         $("#icon").removeClass("bounce-opacity");
+        
+        if (!bPHONEGAP) {
+            soundBGM.volume = 0.8;
+        }else{
+            soundBGM.setVolume(0.8);
+        }
 
         bReplay = true;
 
@@ -947,28 +955,35 @@ function loadUser() {
 }
 
 function sendAjaxDB(){
-    var tempArray = [];
-    for (var i = 0; i < localStorage.length; i++) {
-        tempArray.push(JSON.parse(localStorage[i]));
+    if (navigator.onLine) {
+        var tempArray = [];
+        for (var i = 0; i < localStorage.length; i++) {
+            tempArray.push(JSON.parse(localStorage[i]));
+        }
+        
+        $.ajax({
+            type:'POST',
+            url:'http://bsq.cherryvietnam.com/goldworld/ajax.php',
+            data:{            
+                'dbdj':JSON.stringify(tempArray)            
+            },
+            success:function(msg){
+               var temp = JSON.parse(msg);
+                
+               if (temp.result == "1") {
+                
+                    alert("Done to send server");
+                    $("#buttonSendAjax").text("None");
+                    
+                    localStorage.clear();
+               }
+               
+               
+        }});
+    }else{
+        
+        alert("Thiet bi hien tai chua ket noi vao internet !");
+        
     }
     
-    $.ajax({
-        type:'POST',
-        url:'http://bsq.cherryvietnam.com/goldworld/ajax.php',
-        data:{            
-            'dbdj':JSON.stringify(tempArray)            
-        },
-        success:function(msg){
-           var temp = JSON.parse(msg);
-            
-           if (temp.result == "1") {
-            
-                alert("Done to send server");
-                $("#buttonSendAjax").text("None");
-                
-                localStorage.clear();
-           }
-           
-           
-    }});
 }
